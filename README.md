@@ -2,14 +2,12 @@
 
 ## Statement of Purpose
 
-<pre>
 ***-- PLEASE NOTE --***
 This application is still being built as part of an assignment from my bootcamp course. This github project is set to public so that I may get feedback from my peers in class and instructors.
 
 If you can see this text, then the application is not yet ready.
 
 ***-- Please do not attempt to utilise it! --***
-</pre>
 
 The application allows for the reading and editing of CSV files via a command prompt when a GUI program is not suitable or available to do so. It reads out the contents of the file to the screen and the user then nominates a line to edit.
 
@@ -58,14 +56,13 @@ The data object views are
   - for displaying a single entry to the screen with all of its fields with headers as labels
   - for editing a single line entry's value fields
 
-
 ### Editing Entries
 
 Editing involves cycling through an iteration of the entry's hash.
 
 1. Editing an entry is done by selecting the 'edit' command from the menu
-2. Each key for the entry's hash will be provided with an individual prompt. 
-3. For value entry, either
+2. Each key for the entry's hash will be provided with an individual prompt.
+3. For value entry, either  
    - a new value can be entered at the blank prompt  
    - or the prompt can be left blank to accept the previously existing value.
 4. Once the  the last hash key of the entry has reached, the user will be prompted  
@@ -124,4 +121,3 @@ The persistent settings can be overidden at the initilisation of the application
 | [TTY-Reader](https://github.com/piotrmurach/tty-reader)       | Captures user keystrokes for controlling/manipulating the display                                                                            |
 | [TTY-Prompt](https://github.com/piotrmurach/tty-prompt)       | Enables the selection of menu items                                                                                                          |
 | [TTY-Screen](https://github.com/piotrmurach/tty-screen)       | Used to obtain the user's terminal window size to prevent the amount of data being outputted being more than the user's terminal can display |
-
