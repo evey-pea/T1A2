@@ -2,6 +2,15 @@
 
 ## Statement of Purpose
 
+<pre>
+***-- PLEASE NOTE --***
+This application is still being built as part of an assignment from my bootcamp course. This github project is set to public so that I may get feedback from my peers in class and instructors.
+
+If you can see this text, then the application is not yet ready.
+
+***-- Please do not attempt to utilise it! --***
+</pre>
+
 The application allows for the reading and editing of CSV files via a command prompt when a GUI program is not suitable or available to do so. It reads out the contents of the file to the screen and the user then nominates a line to edit.
 
 ### Use case indentification
@@ -34,20 +43,77 @@ Primarily the application is a light weight solution aimed at data server admins
   - Settings have editable defaults
   - Settings can be overridden with arguments entered on program initialising through the command line
 
-### Reading Data Entries to the screen
+### Reading Data
 
-Reading the entries to screen involves a moving stick algorithm that displays a set amount of entries at a time. This is because some data sets can be quite large. If the output is not restrained to smaller increments, the contents displayed could be more than the user's available terminal screen height and/or line limit. 
+The data from the CSV file is loading via the Ruby gem [Smarter CSV](https://github.com/tilo/smarter_csv)
+
+#### Terminal commands
+
+There are several options that return information about the file without loading the full application.
+
+| Command       | Description                                                              |
+| :------------ | :----------------------------------------------------------------------- |
+| **--count**   | Return a count of the headers and the number of line entries in the file |
+| **--headers** | Returns the individual values for the headers of the file                |
+| **--entries** | Returns the count of entries in the file                                 |
+
+#### Selecting Header Data
+
+If only the data from several headers required, the user can select the headers by using the 'headers' menu option in the full application.
+
+This will load to the screen only the headers selected by the user and their respective hash values within the file for editing.
+
+1. 'Headers' option is selected from the menu
+2. Each header is displayed in it's own selection prompt
+3. The user presses the space bar to toggle the selection and confirms by pressing 'Enter'
+4. The User is then presented a list of selected headers and is asked to confirm the full selection before entry line data is read to the screen.
+
+#### Line Entry Output
+
+Reading the line entries form within the file to screen inside the loaded application involves a moving stick algorithm that displays a set amount of entries at a time. This is because some data sets can be quite large. If the output is not restrained to smaller increments, the contents displayed could be more than the user's available terminal screen height and/or line limit.
+
+The number of entries displayed can be set either via the application configuration of by passing an argument at initialisation.
 
 ### Editing Entries
 
+Editing involves cycling through an iteration of the entry's hash.
+
+1. Editing an entry is done by selecting the 'edit' command from the menu
+2. Each key for the entry's hash will be provided with an individual prompt. 
+3. For value entry, either
+   - a new value can be entered at the blank prompt  
+   - or the prompt can be left blank to accept the previously existing value.
+4. Once the  the last hash key of the entry has reached, the user will be prompted  
+   - to confirm the changes  
+   - or exit without changing the entry
+5. The user will then be provided with the previous list of entries with the output reflecting the changes made
+
+### Settings
+
+Default settings are saved in a .yaml configruation file and can be set via the 'options' menu option
+
+Available settings include:
+
+- the number of headers to be concurrently displayed on screen and
+- the number of entries outputted at a time
+- the colour scheme of the applications
+
+The settings can be overidden at the initilisation of the application by using the following arguments
+
+| Argument | Description                                                                                                            |
+| :------- | :--------------------------------------------------------------------------------------------------------------------- |
+| ```-l``` | Sets the line display limit to the maximum screen height (minus the amount or lines required for the prompt interface) |
+| ```-a``` | Prints all entries to the screen minus the headers (not recommended for large datasets)                                |
+| ```-i``` | Prints a specified index to the screen with headers as keys                                                            |
+
 ## Gems used
 
-| Gem                  | Purpose                                                                                                                                      |
-| :------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pastel (TTY Toolkit) | Provides simplified colorisation of on screen elements                                                                                       |
-| Smarter CSV          | Read and write CSV as hashes (expands on built-in Ruby CSV Class)                                                                            |
-| TTY-Config           | Reads, writes and edits confirguration files                                                                                                 |
-| TTY-Reader           | Captures user keystrokes for controlling/manipulating the display                                                                            |
-| TTY-Prompt           | Enables the selection of menu items                                                                                                          |
-| TTY-Screen           | Used to obtain the user's terminal window size to prevent the amount of data being outputted being more than the user's terminal can display |
+| Gem                                                           | Purpose                                                                                                                                      |
+| :------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Pastel (TTY Toolkit)](https://github.com/piotrmurach/pastel) | Provides simplified colorisation of on screen elements                                                                                       |
+| [Smarter CSV](https://github.com/tilo/smarter_csv)            | Read and write CSV as hashes (expands on built-in Ruby CSV Class)                                                                            |
+| [TTY-Config](https://github.com/piotrmurach/tty-config)       | Reads, writes and edits confirguration files                                                                                                 |
+| [TTY-Reader](https://github.com/piotrmurach/tty-reader)       | Captures user keystrokes for controlling/manipulating the display                                                                            |
+| [TTY-Prompt](https://github.com/piotrmurach/tty-prompt)       | Enables the selection of menu items                                                                                                          |
+| [TTY-Screen](https://github.com/piotrmurach/tty-screen)       | Used to obtain the user's terminal window size to prevent the amount of data being outputted being more than the user's terminal can display |
 
