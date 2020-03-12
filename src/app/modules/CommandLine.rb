@@ -38,7 +38,7 @@ module CommandLine
             when "--headers"
                 @headers_flag = true
             when "--entries"
-                entries_flag = true
+                @entries_flag = true
             else
                 # For all entries on the command line that are not static values (ie filenames, numbers and invalid commands)
                 # If value is numeric, assign it to @number_passed as an integer (float values will result in only numerals to the left of the decimal point being used)
@@ -92,6 +92,32 @@ module CommandLine
             puts "Only '-l' flag can be used with arguments."
             @exit_status = true
         end
+    end
+
+    # Determines if arguments are for console output only
+    def for_terminal_output
+        (@all_output || 
+            @specify_index || 
+            @count_flag || 
+            @headers_flag ||
+            @entries_flag)? true : false
+    end
+
+    # Executes a command based on flags or arguements
+    def do_terminal_output
+        if @all_output
+            # Print headers and entries to the limit of the number passed
+            puts "All Data output"
+        elsif @specify_index
+            puts "Specific index output"
+        elsif @count_flag
+            puts "Display count of headers and indexes"
+        elsif @headers_flag
+            header_output()
+        elsif @entries_flag
+            puts "Display number of entries"
+        end
+
     end
 end
 
