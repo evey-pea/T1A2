@@ -95,7 +95,7 @@ Available settings include:
 
 ## Terminal commands
 
-There are several options that return information about the file without loading the full application.
+There are several options that return information about the file without loading the full application. Each of these terminal commands are only to be used on their own (no chaining).
 
 | Command       | Description                                                              |
 | :------------ | :----------------------------------------------------------------------- |
@@ -103,13 +103,11 @@ There are several options that return information about the file without loading
 | **--headers** | Returns the individual values for the headers of the file                |
 | **--entries** | Returns the count of entries in the file                                 |
 
-The persistent settings can be overidden at the initilisation of the application by using the following arguments
-
-| Argument | Description                                                                                                            |
-| :------- | :--------------------------------------------------------------------------------------------------------------------- |
-| ```-l``` | Sets the line display limit to the maximum screen height (minus the amount or lines required for the prompt interface) |
-| ```-a``` | Prints all entries to the screen minus the headers (not recommended for large datasets)                                |
-| ```-i``` | Prints a specified index to the screen with headers as keys                                                            |
+| Argument | Description                                                                                                                                                                             |
+| :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ```-l``` | Sets the line display limit to the maximum screen height (minus the amount or lines required for the prompt interface) This overides the persistent setting upon program initialisation |
+| ```-a``` | Prints all entries to the screen minus the headers (not recommended for large datasets)                                                                                                 |
+| ```-i``` | Prints a specified index to the screen with keys as headers                                                                                                                             |
 
 ## Ruby Gem Dependencies
 
