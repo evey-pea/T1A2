@@ -27,7 +27,7 @@ Primarily the application is a light weight solution aimed at data server admins
 
 ### Basic Usage Example
 
-- Once at the file's location on the target machine, the user can access it with the command ```tare-csv [filename].csv```
+- Once at the file's location on the target machine, the user can access it with the command ```tare-csv.rb [filename].csv```
 - Upon loading the file, the terminal will display a message that the file has been parsed successfully in to the application along with a count of the headers and of the number of entries in the file
 - The user is then supplied with a list of available commands under the output with a prompt to select the one of the options
 - Once the user is finished with the application, the application can be exited and return to the previous terminal location
@@ -95,7 +95,7 @@ Available settings include:
 
 ## Terminal commands
 
-There are several options that return information about the file without loading the full application. Each of these terminal commands are only to be used on their own (no chaining).
+There are several options that return information about the file without loading the full application. Each of these terminal commands are only to be used on their own, with the exception of the ```-l``` and ```-a``` flagswhich can be used together.
 
 | Command       | Description                                                              |
 | :------------ | :----------------------------------------------------------------------- |
