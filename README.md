@@ -95,7 +95,7 @@ Available settings include:
 
 ## Terminal commands
 
-There are several options that return information about the file without loading the full application. Each of these terminal commands are only to be used on their own, with the exception of the ```-l``` and ```-a``` flagswhich can be used together.
+There are several options that return information about the file without loading the full application. Each of these terminal commands are only to be used on their own, with the exception of the ```-l``` and ```-a``` flags which can be used together.
 
 | Command       | Description                                                              |
 | :------------ | :----------------------------------------------------------------------- |
@@ -107,7 +107,7 @@ There are several options that return information about the file without loading
 | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ```-l``` | Sets the line display limit to the maximum screen height (minus the amount or lines required for the prompt interface) This overides the persistent setting upon program initialisation |
 | ```-a``` | Prints all entries to the screen minus the headers (not recommended for large datasets)                                                                                                 |
-| ```-i``` | Prints a specified index to the screen with keys as headers                                                                                                                             |
+| ```-i``` | Prints a specified index to the screen with file headers as keys                                                                                                                             |
 
 ## Ruby Gem Dependencies
 
