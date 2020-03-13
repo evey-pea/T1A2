@@ -1,26 +1,18 @@
-# Load CSV class from core library
-require 'csv'
-
-# module CSV_Parse
-    # Module testing variable
-    filename = "./../data/test.csv"
-    $data = CSV.read(filename)
-
+module Data_manipulation
     # Counts number of items in first line of file
     def file_count_headers
-        return "File header count: #{$data[0].length}"
+        return "File header count: #{@data[0].length}"
     end
 
     # Returns a count of entries in file
     def file_count_entries
-        return "File entry count: #{$data.length - 1}"
+        return "File entry count: #{@data.length - 1}"
     end
 
     # Output index values without headers
     def index_output(index)
         output = ""
-        entry = $data[index]
-
+        entry = @data[index]
         # Put index at the start of the line
         output = "#{index.to_s.chomp} #: "
         for field in entry do
@@ -30,8 +22,16 @@ require 'csv'
     end
     # Output header fields and count
     def header_output
-        return [file_count_headers, $data[0]]
+        return [file_count_headers, @data[0]]
     end
+    # # Output header fields and count (alternate)
+    # def header_output
+    #     output = []
+    #     output.push(file_count_headers()) 
+    #     output.push(index_output(0))
+    #     puts output.to_s
+    #     return output.to_s
+    # end
 
     # Returns a nominated entry as a nested array object
     def read_entry(array, index)
@@ -74,11 +74,4 @@ require 'csv'
         # Output temporary entry object
         return  entry_output("Updated Entry...",entry)
     end
-# end
-
-puts header_output
-# puts file_count_entries
-# puts edit_entry($data,2).to_s
-
-# # End of module file (required)
-# end
+end
