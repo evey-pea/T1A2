@@ -8,7 +8,8 @@
 
 # Loads files containing local modules
 require "./modules/CommandLine.rb"
-require "./modules/CSV_IO_Stream.rb"
+require "./modules/CSV_IO.rb"
+# require "./modules/CSV_IO_Stream.rb"
 # require "./modules/DataManipulation.rb"
 
 # Create program class for state placeholders
@@ -23,19 +24,24 @@ class MainProgramState
         :file_name,
         :number_passed
         :data
+        :conflict
     # Load the Commandline module
     include CommandLine
-    include CSV_Parse    
+    include CSV_IO_handlers
     def initialize
         # Exit status is used to terminate program
         @exit_status = false
+        @conflict = false
         @data = []
         # Perform checks on commandline input and sets exit status to true if incorrect values are passed
         # From CommandLine module
         check_ARGV_on_initialization()
-        if for_terminal_output()
-            do_terminal_output()
+        if @file_name != nil
+            data_load(@file_name)
         end
+        # Self testing method that tests if arguments are meant for terminal output only
+        # it true, executes Terminal output and sets @exit_status to true to prevetn loading of main program loop
+        do_terminal_output()
         
     end   
     
@@ -47,7 +53,7 @@ end
 
 # Initialise progam instance
 program = MainProgramState.new
-
+p program
 # while program.exit == false
     
 # end

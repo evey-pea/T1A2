@@ -21,6 +21,7 @@ module CommandLine
             # If no arguments are supplied, error messaged is logged to console and exit flag is set to true
             puts "No CSV file, flags, or commands specified."
             @exit_status = true
+            @conflict = true
         else
             
         # Iterate through the arguments entered and use them to set flags in the program instance
@@ -50,7 +51,8 @@ module CommandLine
                 # For everything else, there is Mastercard. Error message will be logged to console and @exit_status will be set to 'true' to terminate the program 
                 else
                     puts "Invalid argument: #{value}"
-                    @exit_status =true
+                    @exit_status = true
+                    @conflict = true
                 end
             end
         end
@@ -71,6 +73,7 @@ module CommandLine
         if count > 1
             puts "Too many command arguments passed. Expected 1, recieved #{count}"
             @exit_status = true
+            @conflict = true
         end
     end
 
@@ -78,11 +81,13 @@ module CommandLine
     def check_flags
         if (specify_index == true && line_limit == true)
             puts "Conflicting flags -i and -l."
-            exit_status = true
+            @exit_status = true
+            @conflict = true
         end
         if (specify_index == true && all_output == true)
             puts "Conflicting flags -i and -a."
-            exit_status = true
+            @exit_status = true
+            @conflict = true
         end
     end
 
@@ -91,33 +96,40 @@ module CommandLine
         if (@count_flag || @headers_flag || @entries_flag) && (@specify_index || @all_output)
             puts "Only '-l' flag can be used with arguments."
             @exit_status = true
+            @conflict = true
         end
     end
 
     # Determines if arguments are for console output only
-    def for_terminal_output
-        (@all_output || 
-            @specify_index || 
-            @count_flag || 
-            @headers_flag ||
-            @entries_flag)? true : false
-    end
+    # def for_terminal_output
+    #     (@all_output || 
+    #         @specify_index || 
+    #         @count_flag || 
+    #         @headers_flag ||
+    #         @entries_flag)? true : false
+    # end
 
     # Executes a command based on flags or arguements
     def do_terminal_output
-        if @all_output
-            # Print headers and entries to the limit of the number passed
-            puts "All Data output"
-        elsif @specify_index
-            puts "Specific index output"
-        elsif @count_flag
-            puts "Display count of headers and indexes"
-        elsif @headers_flag
-            header_output()
-        elsif @entries_flag
-            puts "Display number of entries"
+        if (@all_output || @specify_index || @count_flag || @headers_flag ||@entries_flag)
+            # Set exit status to true to prevent main program loading
+            @exit_status = true
+            if @conflict == false
+                # Carry out terminal output
+                if @all_output
+                    # Print headers and entries to the limit of the number passed
+                    puts "All Data output"
+                elsif @specify_index
+                    puts "Specific index output"
+                elsif @count_flag
+                    puts "Display count of headers and indexes"
+                elsif @headers_flag
+                    puts "Use header_output()"
+                elsif @entries_flag
+                    puts "Display number of entries"
+                end
+            end
         end
-
     end
 end
 
