@@ -135,8 +135,7 @@ module Data_manipulation
                 puts $accepted.("Headers saved to file.")
             else
                 puts $rejected.("No changes made.")
-            end
-            
+            end 
         else
             index_output("Original Entry...",file_output_entries(index))
             edit_entry = entry_transpose(index)
@@ -164,7 +163,6 @@ module Data_manipulation
             else
                 puts $rejected.("No changes made.")
             end
-        end
-        
+        end     
     end
 end

@@ -62,5 +62,4 @@ def display_help
 
 DESC
     puts help_display
-
 end

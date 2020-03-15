@@ -1,4 +1,3 @@
-
 module CSV_IO_handlers
     # Loads data from CSV and returns it as nested array
     def data_load(filename)

@@ -23,10 +23,10 @@ module CommandLine
         true if Float(object) rescue false
     end
     
-    # Checks if no value is parsed after the program call 
     def parse_ARGV
         if ARGV.empty?
             # If no arguments are supplied, error messaged is logged to console and exit flag is set to true
+            # Checks if no value is parsed after the program call 
             puts "No CSV file, flags, or commands specified."
             @exit_status = true
             @conflict = true
@@ -91,10 +91,7 @@ module CommandLine
 
     # Check if flag arguments passed conflict with each other
     def check_flags
-        # if (specify_index == true && line_limit == true)
-        #     puts "Conflicting flags -i and -."
-        #     @exit_status = true
-        #     @conflict = true
+        
         end
         if (specify_index == true && all_output == true)
             puts "Conflicting flags -i and -a."
@@ -102,16 +99,6 @@ module CommandLine
             @conflict = true
         end
     end
-
-
-    # Determines if arguments are for console output only
-    # def for_terminal_output
-    #     (@all_output || 
-    #         @specify_index || 
-    #         @count_flag || 
-    #         @headers_flag ||
-    #         @entries_flag)? true : false
-    # end
 
     # Executes a command based on flags or arguements
     def do_terminal_output
@@ -142,6 +129,3 @@ module CommandLine
         end
     end
 end
-
-# # End of module file
-# end

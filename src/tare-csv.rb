@@ -22,7 +22,7 @@ class MainProgramState
     # Load the Commandline module
     include CommandLine
     include CSV_IO_handlers
-        def initialize
+    def initialize
         # Exit status is used to terminate program
         @exit_status = false
         @conflict = false
@@ -47,10 +47,3 @@ end
 
 # Initialise progam instance
 program = MainProgramState.new
-# p program
-# while program.exit == false
-    
-# end
-# # initialise program run time loop
-
-# puts "Exiting program..."

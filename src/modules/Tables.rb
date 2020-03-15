@@ -1,4 +1,3 @@
-
 module Tables
     require 'tty-table'
 
@@ -10,7 +9,3 @@ module Tables
         table.render(:unicode, resize: true, padding: [0,1,0,0])
     end
 end
-
-# test_data = [["Name", "Age", "Hobby"], ["Mike", 28, "Stamp Collecting"], ["Mike", 23, "Skating"], ["Geoff", 52, "Gardening"]]
-
-# puts display_table(test_data)
