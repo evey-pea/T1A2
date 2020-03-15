@@ -36,10 +36,7 @@ Primarily the application is a light weight solution aimed at data server admins
 
 - **Reads** CSV files with headers to the screen
   - Entries can be displayed as either a list or as individual entries
-- Can **edit** entries (in single entry view mode) and allow the user to **save** to back to original file or create a new file
-- Has a default **settings** configuration that allow for how many lines are displayed at a time
-  - Settings have editable defaults
-  - Settings can be overridden with arguments entered on program initialising through the command line
+- Can **edit** entries (in single entry view mode) and allow the user to **save** to back to original file
 
 ### Reading Data Implementation
 
@@ -65,37 +62,14 @@ Editing involves cycling through an iteration of the entry's hash.
 3. For value entry, either  
    - a new value can be entered at the blank prompt  
    - or the prompt can be left blank to accept the previously existing value.
-4. Once the  the last hash key of the entry has reached, the user will be prompted  
+4. The user will then be provided with the list of fields with the output reflecting the changes made
+5. Once the  the last hash key of the entry has reached, the user will be prompted  
    - to confirm the changes  
    - or exit without changing the entry
-5. The user will then be provided with the previous list of entries with the output reflecting the changes made
-
-### Selecting Header Data
-
-If only the data from several headers required, the user can select the headers by using the 'headers' menu option in the full application.
-
-This will load to the screen only the headers selected by the user and their respective hash values within the file for editing.
-
-1. 'Headers' option is selected from the menu
-2. Each header is displayed in it's own selection prompt
-3. The user presses the space bar to toggle the selection and confirms by pressing 'Enter'
-4. The User is then presented a list of selected headers and is asked to confirm the full selection before entry line data is read to the screen.
-
-The number of entries displayed can be set either via the application configuration of by passing an argument at initialisation.
-
-### Settings
-
-Default settings are saved in a .yaml configruation file and can be set via the 'options' menu option
-
-Available settings include:
-
-- the number of headers to be concurrently displayed on screen and
-- the number of entries outputted at a time
-- the colour scheme of the applications
 
 ## Terminal commands
 
-There are several options that return information about the file without loading the full application. Each of these terminal commands are only to be used on their own, with the exception of the ```-l``` and ```-a``` flags which can be used together.
+There are several options that return information about the csv file to the terminal. Each of these terminal commands are only to be used on their own.
 
 | Command       | Description                                                              |
 | :------------ | :----------------------------------------------------------------------- |
@@ -103,19 +77,17 @@ There are several options that return information about the file without loading
 | **--headers** | Returns the individual values for the headers of the file                |
 | **--entries** | Returns the count of entries in the file                                 |
 
-| Argument | Description                                                                                                                                                                             |
-| :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ```-l``` | Sets the line display limit to the maximum screen height (minus the amount or lines required for the prompt interface) This overides the persistent setting upon program initialisation |
-| ```-a``` | Prints all entries to the screen minus the headers (not recommended for large datasets)                                                                                                 |
-| ```-i``` | Prints a specified index to the screen with file headers as keys                                                                                                                             |
+| Argument | Description                                                                                          |
+| :------- | :--------------------------------------------------------------------------------------------------- |
+| ```-a``` | Prints all entries to the screen minus the headers (not recommended for large datasets)              |
+| ```-i``` | Prints a specified index to the screen with file headers as keys                                     |
+| ```-e``` | Edit mode. User must list an entry number to edit. Header row is line 0, entries starting at line 1. |
+| ```-h``` | Displays help file in terminal                                                                       |
 
 ## Ruby Gem Dependencies
 
-| Gem                                                           | Purpose                                                                                                                                      |
-| :------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Pastel (TTY Toolkit)](https://github.com/piotrmurach/pastel) | Provides simplified colorisation of on screen elements                                                                                       |
-| [Smarter CSV](https://github.com/tilo/smarter_csv)            | Read and write CSV as hashes (expands on built-in Ruby CSV Class)                                                                            |
-| [TTY-Config](https://github.com/piotrmurach/tty-config)       | Reads, writes and edits confirguration files                                                                                                 |
-| [TTY-Reader](https://github.com/piotrmurach/tty-reader)       | Captures user keystrokes for controlling/manipulating the display                                                                            |
-| [TTY-Prompt](https://github.com/piotrmurach/tty-prompt)       | Enables the selection of menu items                                                                                                          |
-| [TTY-Screen](https://github.com/piotrmurach/tty-screen)       | Used to obtain the user's terminal window size to prevent the amount of data being outputted being more than the user's terminal can display |
+| Gem                                                           | Purpose                                                           |
+| :------------------------------------------------------------ | :---------------------------------------------------------------- |
+| [Pastel (TTY Toolkit)](https://github.com/piotrmurach/pastel) | Provides simplified colorisation of on screen elements            |
+| [TTY-Reader](https://github.com/piotrmurach/tty-reader)       | Captures user keystrokes for controlling/manipulating the display |
+| [TTY-Table] (https://github.com/piotrmurach/tty-table)        | Displays output as a table in terminal                            |
