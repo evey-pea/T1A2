@@ -3,7 +3,8 @@
 # Loads files containing local modules
 require "./modules/CommandLine.rb"
 require "./modules/CSV_IO.rb"
-require "./modules/Pastel.rb"
+
+
 
 # Create program class for state placeholders
 class MainProgramState
@@ -21,9 +22,7 @@ class MainProgramState
     # Load the Commandline module
     include CommandLine
     include CSV_IO_handlers
-    include PastelColors
-    include CSV_IO_handlers
-    def initialize
+        def initialize
         # Exit status is used to terminate program
         @exit_status = false
         @conflict = false
