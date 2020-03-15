@@ -52,7 +52,7 @@ end
 
 # Initialise progam instance
 program = MainProgramState.new
-p program
+# p program
 # while program.exit == false
     
 # end

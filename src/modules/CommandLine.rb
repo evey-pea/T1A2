@@ -85,10 +85,10 @@ module CommandLine
 
     # Check if flag arguments passed conflict with each other
     def check_flags
-        if (specify_index == true && line_limit == true)
-            puts "Conflicting flags -i and -l."
-            @exit_status = true
-            @conflict = true
+        # if (specify_index == true && line_limit == true)
+        #     puts "Conflicting flags -i and -."
+        #     @exit_status = true
+        #     @conflict = true
         end
         if (specify_index == true && all_output == true)
             puts "Conflicting flags -i and -a."
@@ -117,18 +117,18 @@ module CommandLine
 
     # Executes a command based on flags or arguements
     def do_terminal_output
-        if (@all_output || @specify_index || @edit_entry || @count_flag || @headers_flag || @entries_flag)
+        if (@all_output || @specify_index || @edit_flag || @count_flag || @headers_flag || @entries_flag) && (@file_name != nil)
             # Set exit status to true to prevent main program loading
             @exit_status = true
-            if @conflict == false
+            if (@conflict == false)
                 # Carry out terminal output
                 if @all_output
                     # Print headers and entries to the limit of the number passed
-                    puts file_output_entries(0).to_s
+                    puts file_output_entries(0)
                 elsif @specify_index
                     # Specific index output
-                    puts file_output_entries(@number_passed).to_s
-                elsif @edit_entry
+                    puts file_output_entries(@number_passed)
+                elsif @edit_flag
                     puts edit_entry(@number_passed)
                 elsif @count_flag
                     # Display header count and entry count
@@ -145,5 +145,5 @@ module CommandLine
     end
 end
 
-# End of module file
-end
+# # End of module file
+# end

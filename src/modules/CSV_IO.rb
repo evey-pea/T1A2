@@ -14,9 +14,9 @@ module CSV_IO_handlers
         return output
     end
 
+    require "csv"
     def data_save(filename, data)
         # Load Ruby Core CSV module 
-        require "csv"
         # Map data to CSV format using Ruby Core CSV module function ':to_csv'
         csv = data.map(&:to_csv).join
         # Write CSV data to file
