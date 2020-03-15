@@ -4,7 +4,7 @@ module CommandLine
     
     # Load DataManipulation module file
     require "./modules/DataManipulation.rb"
-
+    require "./modules/Help.rb"
     # Load DataManipulation module
     include Data_manipulation
 
@@ -40,6 +40,10 @@ module CommandLine
                 @all_output = true
             when "-i"
                 @specify_index = true
+            when "-h"
+                display_help()
+            when "--help"
+                display_help()
             when "--count"
                 @count_flag = true
             when "--headers"

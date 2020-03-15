@@ -1,15 +1,8 @@
-# Gem Requiremnts
 
-# require 'smarter_csv' # ver 1.2.6
-# require 'tty-screen' # ver 0.7.1
-# require 'tty-reader' # ver 0.7.0
-# require 'tty-prompt' # ver 0.21.0
-# require 'tty-config' # ver 0.21.0
 
 # Loads files containing local modules
 require "./modules/CommandLine.rb"
 require "./modules/CSV_IO.rb"
-
 
 # Create program class for state placeholders
 class MainProgramState
