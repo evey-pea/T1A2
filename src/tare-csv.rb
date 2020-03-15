@@ -3,6 +3,7 @@
 # Loads files containing local modules
 require "./modules/CommandLine.rb"
 require "./modules/CSV_IO.rb"
+require "./modules/Pastel.rb"
 
 # Create program class for state placeholders
 class MainProgramState
@@ -20,6 +21,8 @@ class MainProgramState
     # Load the Commandline module
     include CommandLine
     include CSV_IO_handlers
+    include PastelColors
+    include CSV_IO_handlers
     def initialize
         # Exit status is used to terminate program
         @exit_status = false
@@ -34,7 +37,7 @@ class MainProgramState
         # Self testing method that tests if arguments are meant for terminal output only
         # it true, executes Terminal output and sets @exit_status to true to prevetn loading of main program loop
         do_terminal_output()
-        
+        @data = []
     end   
     
     # Getter method to provide the value of @exit_status

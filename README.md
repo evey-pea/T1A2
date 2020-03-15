@@ -104,7 +104,7 @@ Addititonally, if you wish to make the program executable, you will need to know
 | Gem                                                           | Purpose                                                           |
 | :------------------------------------------------------------ | :---------------------------------------------------------------- |
 | [Pastel (TTY Toolkit)](https://github.com/piotrmurach/pastel) | Provides simplified colorisation of on screen elements            |
-| [TTY-Reader](https://github.com/piotrmurach/tty-reader)       | Captures user keystrokes for controlling/manipulating the display |
+| [TTY-Prompt](https://github.com/piotrmurach/tty-prompt)       | Captures user keystrokes for controlling/manipulating the display |
 | [TTY-Table](https://github.com/piotrmurach/tty-table)         | Displays output as a table in terminal                            |
 
 ### Installing 'tare-csv'

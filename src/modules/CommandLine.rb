@@ -2,18 +2,20 @@ module CommandLine
     ## Command line value parsing
     ## Module is included in MainProgramClass
     
-    # Load DataManipulation module file
+    # Load required module files
     require "./modules/DataManipulation.rb"
     require "./modules/Help.rb"
-    # Load DataManipulation module
+    require "./modules/Tables.rb"
+
+    # Load modules
     include Data_manipulation
+    include Tables
 
     # Called in initialization of MainProgramClass
     def check_ARGV_on_initialization
         parse_ARGV()
         check_arguments()
         check_flags()
-        check_arguments_with_flags()
     end
 
     # Method to use to determine if a string is numeric
@@ -101,14 +103,6 @@ module CommandLine
         end
     end
 
-    # Check if flags other than "-l" are being called with arguments
-    def check_arguments_with_flags
-        if (@count_flag || @headers_flag || @entries_flag) && (@specify_index || @all_output)
-            puts "Only '-l' flag can be used with arguments."
-            @exit_status = true
-            @conflict = true
-        end
-    end
 
     # Determines if arguments are for console output only
     # def for_terminal_output
@@ -128,10 +122,10 @@ module CommandLine
                 # Carry out terminal output
                 if @all_output
                     # Print headers and entries to the limit of the number passed
-                    puts file_output_entries(0)
+                    puts display_table(file_output_entries(0))
                 elsif @specify_index
                     # Specific index output
-                    puts file_output_entries(@number_passed)
+                    puts display_table(file_output_entries(@number_passed))
                 elsif @edit_flag
                     puts edit_entry(@number_passed)
                 elsif @count_flag
