@@ -9,15 +9,14 @@
 # Loads files containing local modules
 require "./modules/CommandLine.rb"
 require "./modules/CSV_IO.rb"
-# require "./modules/CSV_IO_Stream.rb"
-# require "./modules/DataManipulation.rb"
+
 
 # Create program class for state placeholders
 class MainProgramState
     attr_accessor :exit_status,
-        :line_limit,
         :all_output,
         :specify_index,
+        :edit_flag,
         :count_flag,
         :headers_flag,
         :entries_flag,
@@ -37,7 +36,7 @@ class MainProgramState
         # From CommandLine module
         check_ARGV_on_initialization()
         if @file_name != nil
-            data_load(@file_name)
+            @data = data_load(@file_name)
         end
         # Self testing method that tests if arguments are meant for terminal output only
         # it true, executes Terminal output and sets @exit_status to true to prevetn loading of main program loop

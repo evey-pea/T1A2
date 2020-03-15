@@ -2,6 +2,12 @@ module CommandLine
     ## Command line value parsing
     ## Module is included in MainProgramClass
     
+    # Load DataManipulation module file
+    require "./modules/DataManipulation.rb"
+
+    # Load DataManipulation module
+    include Data_manipulation
+
     # Called in initialization of MainProgramClass
     def check_ARGV_on_initialization
         parse_ARGV()
@@ -28,8 +34,8 @@ module CommandLine
         ARGV.each do |value|  
             # Set flags based on nominated argument calls
             case value
-            when "-l"
-                @line_limit = true
+            when "-e"
+                @edit_flag = true
             when "-a"
                 @all_output = true
             when "-i"
@@ -111,22 +117,28 @@ module CommandLine
 
     # Executes a command based on flags or arguements
     def do_terminal_output
-        if (@all_output || @specify_index || @count_flag || @headers_flag ||@entries_flag)
+        if (@all_output || @specify_index || @edit_entry || @count_flag || @headers_flag || @entries_flag)
             # Set exit status to true to prevent main program loading
             @exit_status = true
             if @conflict == false
                 # Carry out terminal output
                 if @all_output
                     # Print headers and entries to the limit of the number passed
-                    puts "All Data output"
+                    puts file_output_entries(0).to_s
                 elsif @specify_index
-                    puts "Specific index output"
+                    # Specific index output
+                    puts file_output_entries(@number_passed).to_s
+                elsif @edit_entry
+                    puts edit_entry(@number_passed)
                 elsif @count_flag
-                    puts "Display count of headers and indexes"
+                    # Display header count and entry count
+                    puts file_count_headers_and_entries
                 elsif @headers_flag
-                    puts "Use header_output()"
+                    # Display header count and header listing
+                    puts header_output
                 elsif @entries_flag
-                    puts "Display number of entries"
+                    # Display number of entries
+                    puts file_count_entries
                 end
             end
         end
