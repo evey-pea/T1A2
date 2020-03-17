@@ -36,9 +36,7 @@ Primarily the application is a light weight solution aimed at data server admins
 
 - Once at the file's location on the target machine, the user can access it with the command  
   ```tare-csv.rb [filename].csv```  
-- Upon loading the file, the terminal will display a message that the file has been parsed successfully in to the application along with a count of the headers and of the number of entries in the file
-- The user is then supplied with a list of available commands under the output with a prompt to select the one of the options
-- Once the user is finished with the application, the application can be exited and return to the previous terminal location
+- Once the user is finished with the application, the application will return to the previous terminal location
 
 ## Features
 
@@ -68,7 +66,7 @@ Editing involves cycling through an iteration of the entry's hash.
    - a new value can be entered at the blank prompt  
    - or the prompt can be left blank to accept the previously existing value.
 4. The user will then be provided with the list of fields with the output reflecting the changes made
-5. Once the  the last hash key of the entry has reached, the user will be prompted  
+5. The user will then be prompted  
    - to confirm the changes  
    - or exit without changing the entry
 
@@ -129,7 +127,7 @@ or
 
 ## Disclaimer
 
-As this code base is the result of a student assignment, care must be undertaken by the user to determine if this application is suitable for both their needs and their individual installation. I accept no liability nor do I offer any support for this codebase at this point in time.
+As this code base is the result of a student assignment, care must be undertaken by the user to determine if this application is suitable for both their needs and their individual installation. I accept no liability arising form the use of nor do I offer any support for this codebase at this point in time.
 
 **All users, regardless of experience level are urged to use caution and common sense when implementing this application.**
 
